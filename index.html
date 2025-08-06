@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>홈페이지 예시</title>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -15,32 +16,25 @@
         flex-direction: column;
         justify-content: center; /* 안의 내용 수직 가운데 정렬 */
     }
-
-    /* 배너 이미지는 여전히 꽉 채움 */
-    
     .carousel-inner {
-        height: 600px; /* 동일한 높이 */
-    }
-    .carousel-item {
-        aspect-ratio: 5 / 4; 
-        overflow: hidden;
+        height: 500px; /* 화면 전체 높이 */
     }
     .carousel-item img {
-        width: 100%;
         height: 100%;
-        object-fit: cover; /* 사진이 비율 맞게 가운데로 */
+        object-fit: cover; /* 가로 긴 사진 기준 꽉 채우기 */
     }
 
     .carousel-caption {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 120px !important;  /* 글씨 위치 조정 */
+        bottom: auto;
+        transform: none;
+        background: none !important; /* 배경 투명 */
         text-align: center;
     }
     .header-banner {
         width: 100%;
         height: 600px; /* 사진 높이 고정 */
+        bottom: 1300px;
         background-image: url('banner1.png'); /* 사진 경로 */
         background-size: cover;     /* 꽉 채우기 */
         background-position: center;/* 가운데 기준 */
@@ -58,8 +52,6 @@
         border-radius: 10px;
     }
 
-    /* 작은 화면에서 navbar 색상 유지 */
-    /* nav-link 기본 상태: 테두리, 배경 제거 */
     .navbar .nav-link {
         color: white !important;
         border: none !important;
@@ -84,15 +76,20 @@
             background-color: transparent !important;
             z-index: 10;
         }
+        
+        /* 모든 nav-link 기본 글자색 흰색 */
         .navbar .nav-link {
             color: white !important;
         }
+        /* hover, focus, active 상태에서도 흰색 유지 */
         .navbar .nav-link:hover,
         .navbar .nav-link:focus,
         .navbar .nav-link.active {
             color: white !important;
             background-color: transparent !important;
         }
+
+        /* 드롭다운 메뉴 */
         .navbar .dropdown-menu {
             background-color: rgba(0,0,0,0.8);
         }
@@ -155,7 +152,6 @@
 </head>
 
 <body>
-    <!-- 네비게이션 -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -172,58 +168,64 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav nav-pills ms-auto">
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Annual conference</a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="index.html">2025 APSAO in Gwangju</a></li>
-                        <li><a class="dropdown-item" href="#">Location</a></li>
-                        <li><a class="dropdown-item" href="#">Hotel</a></li>
-                        <li><a class="dropdown-item" href="#">Tour</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="https://www.apsao.org/">APSAO</a></li>
-                    </ul>
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Annual conference</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="index.html">2025 APSAO in Gwangju</a></li>
+                            <li><a class="dropdown-item" href="#">Location</a></li>
+                            <li><a class="dropdown-item" href="#">Hotel</a></li>
+                            <li><a class="dropdown-item" href="#">Tour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="https://www.apsao.org/">APSAO</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="https://sites.google.com/view/apsao-kor/program?authuser=0">Program</a>
+                        <a class="nav-link" href="https://sites.google.com/view/apsao-kor/program?authuser=0">Program</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="Registration.html">Registration</a>
+                        <a class="nav-link" href="Registration.html">Registration</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="Abstract page.html">Abstract</a>
+                        <a class="nav-link" href="Abstract page.html">Abstract</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="#">Community</a>
                     </li>
-                    </nav>
+
+                    <!-- 로그인 아이콘 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i id="loginIcon" class="bi bi-person"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu" id="userMenuItems">
+                            <!-- 여기 내용은 JS에서 상태에 따라 변경됨 -->
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- 배너 -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
 
             <!-- 첫 번째 이미지 -->
             <div class="carousel-item active banner-item">
-                <img src="banner1.png" alt="First slide">
+                <img src="banner1.png" class="d-block w-100" alt="First slide">
                 <div class="carousel-caption banner-caption">
                     <h6>The Asia-Pacific Society for Artificial Organs</h6>
                     <h1 class="fw-bold">APSAO - KTCVS</h1>
                     <h4>2025 Annual Conference / NOV 7(Fri) - 8(Sat)</h4>
-                    <p>Main conference room, Chonnam National University Hospital Biomedical Research Institute</p>
-                    <p>GWANGJU, Republic of KOREA</p>
                 </div>
             </div>
 
             <!-- 두 번째 이미지 -->
             <div class="carousel-item banner-item">
-                <img src="banner2.png" alt="Second slide">
+                <img src="banner2.png" class="d-block w-100" alt="Second slide">
                 <div class="carousel-caption banner-caption">
                     <h6>The Asia-Pacific Society for Artificial Organs</h6>
                     <h1 class="fw-bold">APSAO - KTCVS</h1>
                     <h3>2025 Annual Conference</h3>
-                    <p>NOV 7(Fri) - 8(Sat), 2025</p>
                     <p>Venue: Main conference room, Chonnam National University Hospital Biomedical Research Institute</p>
                     <p>GWANGJU, Republic of KOREA</p>
                 </div>
@@ -257,36 +259,97 @@
         <!-- Abstracts -->
         <div class="col-md-6">
             <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
-            <h5 class="fw-bold">ABSTRACTS</h5>
-            <a href="Abstract page.html" class="text-muted small">더보기</a> 
+                <h5 class="fw-bold">ABSTRACTS</h5>
+                <a href="Abstract page.html" class="text-muted small">더보기</a> 
             </div>
-            <ul class="list-unstyled">
-            <!-- 예시 항목 -->
-            <li class="mb-2">
-                <a href="abstract-detail.html" class="text-decoration-none text-dark d-flex justify-content-between">
-                <span class="text-truncate">등록된 초록이 없습니다.</span>
-                <small class="text-muted">-</small>
-                </a>
-            </li>
+            <ul id="recentSubmissions" class="list-unstyled">
+                <!-- 자바스크립트로 목록 채움 -->
             </ul>
         </div>
-        </div>
-    </div>
-    
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const recentSubmissions = document.getElementById("recentSubmissions");
+            const submissions = JSON.parse(localStorage.getItem("abstracts") || "[]");
+
+            recentSubmissions.innerHTML = "";
+
+            if (submissions.length === 0) {
+                recentSubmissions.innerHTML = `
+                    <li class="mb-2">
+                        <span class="text-muted">등록된 초록이 없습니다.</span>
+                    </li>
+                `;
+            } else {
+                submissions.slice(-5).reverse().forEach((sub) => {
+                    const li = document.createElement("li");
+                    li.className = "mb-2";
+                    li.innerHTML = `
+                        <a href="Abstract page.html#submitted abstracts" class="text-decoration-none text-dark d-flex justify-content-between">
+                            <span class="text-truncate">${sub.firstName} ${sub.lastName} - ${sub.abstractText}</span>
+                            <small class="text-muted">NEW</small>
+                        </a>
+                    `;
+                    recentSubmissions.appendChild(li);
+                });
+            }
+        });
+        </script>
+        
     <!-- 뉴스 섹션 -->
-    <div class="container mt-5 section-full-height">
+    <div class="container section-full-height" style="margin-top: 80px; margin-bottom: 180px;">
         <h1 class="mb-4 text-center">COMMUNITY</h1>
         <div id="communityCards" class="community-scroll"></div>
     
         <!-- 페이지네이션 -->
-        <nav aria-label="Community page navigation">
-        <ul id="communityPagination" class="pagination justify-content-center mt-4"></ul>
+        <nav aria-label="Community page navigation" style="margin-top: 50px;">
+            <ul id="communityPagination" class="pagination justify-content-center"></ul>
         </nav>
     </div>
         </div>
     </div>
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loginIcon = document.getElementById("loginIcon");
+        const userMenuItems = document.getElementById("userMenuItems");
+
+        const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+        const role = localStorage.getItem("role"); // admin, user, null
+
+        // 아이콘 변경
+        if (isLoggedIn && role === "admin") {
+            loginIcon.className = "bi bi-person-gear";
+        } else if (isLoggedIn && role === "user") {
+            loginIcon.className = "bi bi-person-fill-check";
+        } else {
+            loginIcon.className = "bi bi-person";
+        }
+
+        // 드롭다운 메뉴 변경
+        if (isLoggedIn) {
+            userMenuItems.innerHTML = `
+                <li><a class="dropdown-item" href="edit-profile.html">edit information</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="logoutBtn">log out</a></li>
+            `;
+        } else {
+            userMenuItems.innerHTML = `
+                <li><a class="dropdown-item" href="login.html">log in</a></li>
+            `;
+        }
+
+        // 로그아웃 버튼 기능
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function () {
+                localStorage.setItem("loggedIn", "false");
+                localStorage.removeItem("role");
+                location.reload(); // 새로고침하여 UI 갱신
+            });
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
         const newsData = [
             { title: "Card 1", text: "Some quick example text to build on the card title." },
@@ -369,15 +432,16 @@
             </div>
             <!-- 중앙 주소 / 연락처 -->
             <div class="col-md-4 mb-3">
-                <p class="mb-1"><strong>주소:</strong> 광주광역시 동구 제봉로 42 전남대학교병원 의생명연구원</p>
-                <p class="mb-1"><strong>TEL:</strong> ???</p>
-                <p class="mb-1"><strong>FAX:</strong> ???</p>
-                <p class="mb-0"><strong>E-mail:</strong> ???@gmail.com</p>
+                <p class="mb-1"><strong>주소:</strong> 광주광역시 동구 제봉로 42 전남대학교병원 의생명연구원 501 호</p>
+                <p class="mb-1"><strong>TEL:</strong> 062-000-0000</p>
+                <p class="mb-1"><strong>FAX:</strong> -</p>
+                <p class="mb-0"><strong>E-mail:</strong>rvkrvyoj@gjnu.ac.co</p>
             </div>
             <!-- 오른쪽 저작권 -->
             <div class="col-md-4 mb-3 text-md-end text-muted">
-                <p class="mb-0">&copy; 2025 APSAO.데모버전 김률희</p>
+                <p class="mb-0">&copy; 2025 APSAO demo by KRH</p>
             </div>
         </div>
     </div>
 </footer>
+</html>

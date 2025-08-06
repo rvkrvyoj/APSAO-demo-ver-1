@@ -14,13 +14,13 @@
         height: 600px; /* index.html과 동일 */
         background-size: cover;
         background-position: center;
-    }
+        }
 
-    .banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         /* 모든 nav-link 기본 글자색 흰색 */
         .navbar .nav-link {
@@ -52,41 +52,51 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="https://www.apsao.org/assets/img-apsao/APSAOlogocroppedsm.png" alt="APSAO" width="30" height="24">
+                <img src="APSAO.png" alt="APSAO" width="30" height="24">
             </a>
-        <ul class="nav nav-pills ms-auto">
+            <ul class="nav nav-pills ms-auto">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Annual conference</a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="index.html">2025 APSAO in Gwangju</a></li>
+                    <li><a class="dropdown-item" href="#">Location</a></li>
+                    <li><a class="dropdown-item" href="#">Hotel</a></li>
+                    <li><a class="dropdown-item" href="#">Tour</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="https://www.apsao.org/">APSAO</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://sites.google.com/view/apsao-kor/program?authuser=0">Program</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Registration.html">Registration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Abstract page.html">Abstract</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Community</a>
+            </li>
+
+            <!-- 로그인 아이콘 -->
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Annual conference</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="index.html">2025 APSAO in Gwangju</a></li>
-                <li><a class="dropdown-item" href="#">Location</a></li>
-                <li><a class="dropdown-item" href="#">Hotel</a></li>
-                <li><a class="dropdown-item" href="#">Tour</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="https://www.apsao.org/">APSAO</a></li>
+                <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i id="loginIcon" class="bi bi-person"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu" id="userMenuItems">
+                    <!-- 여기 내용은 JS에서 상태에 따라 변경됨 -->
+                </ul>
+            </li>
+                </nav>
             </ul>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="https://sites.google.com/view/apsao-kor/program?authuser=0">Program</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="Registration.html">Registration</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="Abstract page.html">Abstract</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Community</a>
-            </li>
-            </nav>
-        </ul>
         </div>
     </nav>
     <div class="container-fluid p-0">
         <img src="banner1.png" alt="Header Image" class="img-fluid w-100" style="max-height: 300px; object-fit: cover;">
     </div>
 
-        <!-- 진행 상황 바 -->
+    <!-- 진행 상황 바 -->
     <div class="container mt-3" style="max-width: 900px;">
         <div class="progress" role="progressbar" aria-label="Form completion progress"
             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -97,91 +107,104 @@
     <div class="container mt-3" style="max-width: 900px;">
         <ul class="nav nav-tabs" id="abstractTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="new-abstract-tab" data-bs-toggle="tab" data-bs-target="#new-abstract" type="button" role="tab">New Abstract Submission</button>
+                <button class="nav-link active" id="new-abstract-tab" data-bs-toggle="tab" data-bs-target="#new-abstract" type="button" role="tab" aria-controls="new-abstract" aria-selected="true">
+                    New Abstract Submission
+                </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="edit-abstract-tab" data-bs-toggle="tab" data-bs-target="#edit-abstract" type="button" role="tab">Edit Abstract</button>
+                <button class="nav-link" id="edit-abstract-tab" data-bs-toggle="tab" data-bs-target="#edit-abstract" type="button" role="tab" aria-controls="edit-abstract" aria-selected="false">
+                    Edit Abstract
+                </button>
             </li>
-        </ul>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="submitted-abstracts-tab" data-bs-toggle="tab" data-bs-target="#submitted-abstracts" type="button" role="tab" aria-controls="submitted-abstracts" aria-selected="false">
+                    Submitted Abstracts
+                </button>
+            </li>
+        </ul>            
     
-        <!-- 탭 콘텐츠 -->
-        <div class="tab-content mt-4" id="abstractTabsContent">
+    <!-- 탭 콘텐츠 -->
+    <div class="tab-content mt-4" id="abstractTabsContent">
     
-            <!-- 새 Abstract 제출 -->
-            <div class="tab-pane fade show active" id="new-abstract" role="tabpanel" aria-labelledby="new-abstract-tab">
-                <hr class="my-4" style="border: 2px solid rgba(0,0,0,0.5);">
-                <form id="newAbstractForm" class="row g-3 needs-validation" novalidate>
-                    <!-- First Name -->
-                    <div class="col-md-4">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+        <!-- 새 Abstract 제출 -->
+        <div class="tab-pane fade show active" id="new-abstract" role="tabpanel" aria-labelledby="new-abstract-tab">
+            <hr class="my-4" style="border: 2px solid rgba(0,0,0,0.5);"> 
+            <form id="newAbstractForm" class="row g-3 needs-validation" novalidate>
+                <!-- First Name -->
+                <div class="col-md-4">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                </div>
+
+                <!-- Last Name -->
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                </div>
+    
+                <!-- Username -->
+                <div class="col-md-4">
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">@</span>
+                        <input type="text" class="form-control" id="username" placeholder="username" required>
                     </div>
+                </div>
+
+                <!-- Affiliation -->
+                <div class="col-md-6">
+                    <label for="affiliation" class="form-label">Affiliation</label>
+                    <input type="text" class="form-control" id="affiliation" placeholder="Enter your institution / organization" required>
+                </div>
     
-                    <!-- Last Name -->
-                    <div class="col-md-4">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                    </div>
+                <!-- State -->
+                <div class="col-md-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state" placeholder="Enter your state / province" required>
+                </div>  
     
-                    <!-- Username -->
-                    <div class="col-md-4">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="input-group has-validation">
-                            <span class="input-group-text">@</span>
-                            <input type="text" class="form-control" id="username" placeholder="username" required>
-                        </div>
-                    </div>
+                <!-- Position -->
+                <div class="col-md-3">
+                    <label for="position" class="form-label">Position</label>
+                    <select class="form-select" id="position" required>
+                        <option value="">Choose</option>
+                        <option>Undergraduate</option>
+                        <option>Master's Student</option>
+                        <option>Doctoral Student</option>
+                        <option>Postdoctoral Researcher (PhD)</option>
+                        <option>Researcher</option>
+                        <option>Master's Degree Holder</option>
+                        <option>Doctorate Degree Holder</option>
+                        <option>Associate Professor</option>
+                        <option>Assistant Professor</option>
+                    </select>
+                </div>
+                <!-- Title -->
+                <div class="col-12">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter your abstract title" required>
+                </div>
+                <!-- Abstract -->
+                <div class="col-12">
+                    <label for="abstract" class="form-label">Abstract (max 500 characters)</label>
+                    <textarea class="form-control" id="abstract" placeholder="Enter your abstract here..." maxlength="500" rows="5" required></textarea>
+                    <small id="charCount" class="text-muted">0 / 500</small>
+                </div>
     
-                    <!-- Affiliation -->
-                    <div class="col-md-6">
-                        <label for="affiliation" class="form-label">Affiliation</label>
-                        <input type="text" class="form-control" id="affiliation" placeholder="Enter your institution / organization" required>
-                    </div>
+                <!-- PDF Upload -->
+                <div class="col-12">
+                    <label for="pdfFile" class="form-label">Upload PDF File</label>
+                    <input type="file" class="form-control" id="pdfFile" accept="application/pdf" required>
+                </div>
     
-                    <!-- State -->
-                    <div class="col-md-3">
-                        <label for="state" class="form-label">State</label>
-                        <input type="text" class="form-control" id="state" placeholder="Enter your state / province" required>
-                    </div>  
+                <!-- Submit Button -->
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     
-                    <!-- Position -->
-                    <div class="col-md-3">
-                        <label for="position" class="form-label">Position</label>
-                        <select class="form-select" id="position" required>
-                            <option value="">Choose</option>
-                            <option>Undergraduate</option>
-                            <option>Master's Student</option>
-                            <option>Doctoral Student</option>
-                            <option>Postdoctoral Researcher (PhD)</option>
-                            <option>Researcher</option>
-                            <option>Master's Degree Holder</option>
-                            <option>Doctorate Degree Holder</option>
-                            <option>Associate Professor</option>
-                            <option>Assistant Professor</option>
-                        </select>
-                    </div>
-    
-                    <!-- Abstract -->
-                    <div class="col-12">
-                        <label for="abstract" class="form-label">Abstract (max 500 characters)</label>
-                        <textarea class="form-control" id="abstract" placeholder="Enter your abstract here..." maxlength="500" rows="5" required></textarea>
-                        <small id="charCount" class="text-muted">0 / 500</small>
-                    </div>
-    
-                    <!-- PDF Upload -->
-                    <div class="col-12">
-                        <label for="pdfFile" class="form-label">Upload PDF File</label>
-                        <input type="file" class="form-control" id="pdfFile" accept="application/pdf" required>
-                    </div>
-    
-                    <!-- Submit Button -->
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-    
-            <!-- Abstract 수정 -->
+        <!-- Abstract 수정 -->
             <div class="tab-pane fade" id="edit-abstract" role="tabpanel" aria-labelledby="edit-abstract-tab">
                 <!-- 1. 본인 확인 폼 -->
                 <form id="verifyForm" class="row g-3 needs-validation" novalidate>
@@ -207,48 +230,396 @@
     
                 <!-- 2. 수정 폼 -->
                 <form id="editForm" class="row g-3 mt-4 needs-validation" novalidate style="display:none;">
+                    <!-- First Name -->
+                    <div class="col-md-4">
+                        <label for="editFirstNameField" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="editFirstNameField" placeholder="First Name" required>
+                    </div>
+                
+                    <!-- Last Name -->
+                    <div class="col-md-4">
+                        <label for="editLastNameField" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="editLastNameField" placeholder="Last Name" required>
+                    </div>
+                
+                    <!-- Username -->
+                    <div class="col-md-4">
+                        <label for="editUsernameField" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input type="text" class="form-control" id="editUsernameField" placeholder="username" required>
+                        </div>
+                    </div>
+                
+                    <!-- Affiliation -->
+                    <div class="col-md-6">
+                        <label for="editAffiliationField" class="form-label">Affiliation</label>
+                        <input type="text" class="form-control" id="editAffiliationField" placeholder="Enter your institution / organization" required>
+                    </div>
+                
+                    <!-- State -->
+                    <div class="col-md-3">
+                        <label for="editStateField" class="form-label">State</label>
+                        <input type="text" class="form-control" id="editStateField" placeholder="Enter your state / province" required>
+                    </div>  
+                
+                    <!-- Position -->
+                    <div class="col-md-3">
+                        <label for="editPositionField" class="form-label">Position</label>
+                        <select class="form-select" id="editPositionField" required>
+                            <option value="">Choose</option>
+                            <option>Undergraduate</option>
+                            <option>Master's Student</option>
+                            <option>Doctoral Student</option>
+                            <option>Postdoctoral Researcher (PhD)</option>
+                            <option>Researcher</option>
+                            <option>Master's Degree Holder</option>
+                            <option>Doctorate Degree Holder</option>
+                            <option>Associate Professor</option>
+                            <option>Assistant Professor</option>
+                        </select>
+                    </div>
+                
+                    <!-- Title -->
                     <div class="col-12">
-                        <label for="editAbstractText" class="form-label">Edit Abstract (max 500 characters)</label>
-                        <textarea class="form-control" id="editAbstractText" maxlength="500" rows="5" required></textarea>
+                        <label for="editTitleField" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitleField" placeholder="Enter your abstract title" required>
+                    </div>
+                
+                    <!-- Abstract -->
+                    <div class="col-12">
+                        <label for="editAbstractField" class="form-label">Abstract (max 500 characters)</label>
+                        <textarea class="form-control" id="editAbstractField" placeholder="Enter your abstract here..." maxlength="500" rows="5" required></textarea>
                         <small id="editCharCount" class="text-muted">0 / 500</small>
                     </div>
+                
+                    <!-- PDF Upload -->
                     <div class="col-12">
-                        <label for="editPdf" class="form-label">Upload New PDF File (optional)</label>
-                        <input type="file" class="form-control" id="editPdf" accept="application/pdf">
+                        <label for="editPdfField" class="form-label">Upload New PDF File (optional)</label>
+                        <input type="file" class="form-control" id="editPdfField" accept="application/pdf">
                     </div>
+                
+                    <!-- Submit Button -->
                     <div class="col-12">
                         <button class="btn btn-success" type="submit">Update Abstract</button>
                     </div>
-                </form>
+                </form>    
+            </div>
+        </div>
+        <!-- Submitted Abstracts -->
+        <div class="tab-pane fade" id="submitted-abstracts" role="tabpanel" aria-labelledby="submitted-abstracts-tab">
+            <h5 class="fw-bold mb-3"></h5>
+            <!-- 목록 화면 -->
+            <div id="abstractListView">
+                <div id="submittedAbstractList" class="list-group">
+                    <div class="list-group-item text-muted">아직 제출된 초록이 없습니다.</div>
+                </div>
+            </div>
+
+            <!-- 상세 화면 -->
+            <div id="abstractDetailView" style="display: none;">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" id="backToList">Submitted Abstracts</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="detailTitle">제목</li>
+                    </ol>
+                </nav>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="detailTitleText">제목</h5>
+                        <p class="card-text text-muted">
+                            <i class="bi bi-lock-fill"></i> 🔒 이 내용은 비공개입니다.
+                        </p>
+                        <small class="text-body-secondary" id="detailMeta"></small>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+            <!-- 부트스트랩 아이콘 CDN -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const loginIcon = document.getElementById("loginIcon");
+                    const userMenuItems = document.getElementById("userMenuItems");
+
+                    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+                    const role = localStorage.getItem("role"); // admin, user, null
+
+                    // 아이콘 변경
+                    if (isLoggedIn && role === "admin") {
+                        loginIcon.className = "bi bi-person-gear";
+                    } else if (isLoggedIn && role === "user") {
+                        loginIcon.className = "bi bi-person-fill-check";
+                    } else {
+                        loginIcon.className = "bi bi-person";
+                    }
+
+                    // 드롭다운 메뉴 변경
+                    if (isLoggedIn) {
+                        userMenuItems.innerHTML = `
+                            <li><a class="dropdown-item" href="edit-profile.html">edit information</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">log out</a></li>
+                        `;
+                    } else {
+                        userMenuItems.innerHTML = `
+                            <li><a class="dropdown-item" href="login.html">log in</a></li>
+                        `;
+                    }
+
+                    // 로그아웃 버튼 기능
+                    const logoutBtn = document.getElementById("logoutBtn");
+                    if (logoutBtn) {
+                        logoutBtn.addEventListener("click", function () {
+                            localStorage.setItem("loggedIn", "false");
+                            localStorage.removeItem("role");
+                            location.reload(); // 새로고침하여 UI 갱신
+                        });
+                    }
+                });
+                document.addEventListener("DOMContentLoaded", function () {
+                    const newForm = document.getElementById("newAbstractForm");
+                    const editVerifyForm = document.getElementById("verifyForm");
+                    const editForm = document.getElementById("editForm");
+                    const submittedList = document.getElementById("submittedAbstractList");
+                    const listView = document.getElementById("abstractListView");
+                    const detailView = document.getElementById("abstractDetailView");
+                    const backToList = document.getElementById("backToList");
+                    const detailTitle = document.getElementById("detailTitle");
+                    const detailTitleText = document.getElementById("detailTitleText");
+                    const detailMeta = document.getElementById("detailMeta");
+                    const progressBar = document.getElementById("progressBar");
+                    const abstractInput = document.getElementById("abstract");
+                    const charCount = document.getElementById("charCount");
+                
+                    const isAdmin = true; // 관리자 여부
+                    let abstracts = JSON.parse(localStorage.getItem("abstracts") || "[]");
+                
+                    // 진행률 업데이트
+                    function updateProgress() {
+                        const activeForm = document.querySelector(".tab-pane.active form");
+                        if (!activeForm) return;
+                        const requiredInputs = activeForm.querySelectorAll("input[required], select[required], textarea[required]");
+                        let filled = 0;
+                        requiredInputs.forEach(input => {
+                            if (input.type === "file") {
+                                if (input.files.length > 0) filled++;
+                            } else if (input.value.trim() !== "") {
+                                filled++;
+                            }
+                        });
+                        const progress = Math.round((filled / requiredInputs.length) * 100);
+                        progressBar.style.width = progress + "%";
+                        progressBar.textContent = progress + "%";
+                        progressBar.parentElement.setAttribute("aria-valuenow", progress);
+                    }
+                
+                    document.querySelectorAll("input[required], select[required], textarea[required]").forEach(input => {
+                        input.addEventListener("input", updateProgress);
+                        input.addEventListener("change", updateProgress);
+                    });
+                
+                    // Abstract 목록 표시 (관리자 전용)
+                    function renderAbstractList() {
+                        submittedList.innerHTML = "";
+                
+                        if (!isAdmin) {
+                            submittedList.innerHTML = `<div class="list-group-item text-muted">권한이 없습니다.</div>`;
+                            return;
+                        }
+                
+                        if (abstracts.length === 0) {
+                            submittedList.innerHTML = `<div class="list-group-item text-muted">아직 제출된 초록이 없습니다.</div>`;
+                            return;
+                        }
+                
+                        abstracts.forEach((abs, index) => {
+                            const abstractPreview = abs.abstractText.length > 50 
+                                ? abs.abstractText.substring(0, 50) + "..." 
+                                : abs.abstractText;
+                
+                            const pdfStatus = abs.pdfUploaded ? "📄 PDF 업로드됨" : "❌ PDF 없음";
+                
+                            const item = document.createElement("a");
+                            item.href = "#";
+                            item.className = "list-group-item list-group-item-action";
+                
+                            item.innerHTML = `
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">${abs.firstName} ${abs.lastName}</h5>
+                                    <small class="text-body-secondary">${abs.date}</small>
+                                </div>
+                                <p class="mb-1">${abstractPreview}</p>
+                                <small class="text-body-secondary">${pdfStatus}</small>
+                            `;
+                
+                            item.addEventListener("click", function (e) {
+                                e.preventDefault();
+                                showDetail(index);
+                            });
+                
+                            submittedList.appendChild(item);
+                        });
+                    }
+                
+                    // 상세 화면 표시
+                    function showDetail(index) {
+                        const abs = abstracts[index];
+                        detailTitle.textContent = `${abs.firstName} ${abs.lastName}`;
+                        detailTitleText.textContent = `${abs.firstName} ${abs.lastName}`;
+                        detailMeta.textContent = `${abs.affiliation}, ${abs.position} | ${abs.date}`;
+                        listView.style.display = "none";
+                        detailView.style.display = "block";
+                    }
+                
+                    // 뒤로가기
+                    backToList.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        detailView.style.display = "none";
+                        listView.style.display = "block";
+                    });
+                
+                    // New Abstract 제출
+                    newForm.addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        if (!newForm.checkValidity()) {
+                            e.stopPropagation();
+                            newForm.classList.add('was-validated');
+                            return;
+                        }
+                
+                        const pdfInput = document.getElementById("pdfFile");
+                        const newAbstract = {
+                            firstName: document.getElementById("firstName").value.trim(),
+                            lastName: document.getElementById("lastName").value.trim(),
+                            affiliation: document.getElementById("affiliation").value.trim(),
+                            position: document.getElementById("position").value,
+                            title: document.getElementById("title").value.trim(), // 제목 추가
+                            abstractText: document.getElementById("abstract").value.trim(),
+                            pdfUploaded: pdfInput.files.length > 0,
+                            date: new Date().toISOString().split("T")[0]
+                        };
+                
+                        abstracts.push(newAbstract);
+                        localStorage.setItem("abstracts", JSON.stringify(abstracts));
+                
+                        newForm.reset();
+                        newForm.classList.remove('was-validated');
+                        updateProgress();
+                        renderAbstractList();
+                        new bootstrap.Tab(document.querySelector('#submitted-abstracts-tab')).show();
+                    });
+                
+                    // 글자수 카운트
+                    abstractInput.addEventListener("input", function () {
+                        charCount.textContent = `${abstractInput.value.length} / 500`;
+                    });
+                
+                    // Bootstrap 유효성 검사
+                    const forms = document.querySelectorAll('.needs-validation');
+                    forms.forEach(form => {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                    
+                    // 🔹 Edit Abstract Verify
+                    editVerifyForm.addEventListener("submit", function (e) {
+                        e.preventDefault();
+
+                        const editFirstName = document.getElementById("editFirstName").value.trim();
+                        const editLastName = document.getElementById("editLastName").value.trim();
+
+                        const found = abstracts.find(abs => 
+                            abs.firstName === editFirstName && abs.lastName === editLastName
+                        );
+
+                        if (found) {
+                            document.getElementById("editFirstNameField").value = found.firstName;
+                            document.getElementById("editLastNameField").value = found.lastName;
+                            document.getElementById("editUsernameField").value = found.username || "";
+                            document.getElementById("editAffiliationField").value = found.affiliation;
+                            document.getElementById("editStateField").value = found.state || "";
+                            document.getElementById("editPositionField").value = found.position;
+                            document.getElementById("editTitleField").value = found.title || "";
+                            document.getElementById("editAbstractField").value = found.abstractText;
+                            document.getElementById("editForm").style.display = "block";
+                        } else {
+                            alert("해당 이름으로 제출된 초록이 없습니다.");
+                        }
+                    });
+
+                    // 🔹 Edit Abstract Save
+                    editForm.addEventListener("submit", function (e) {
+                        e.preventDefault();
+
+                        const editFirstName = document.getElementById("editFirstName").value.trim();
+                        const editLastName = document.getElementById("editLastName").value.trim();
+
+                        const index = abstracts.findIndex(abs => 
+                            abs.firstName === editFirstName && abs.lastName === editLastName
+                        );
+
+                        if (index !== -1) {
+                            abstracts[index] = {
+                                ...abstracts[index],
+                                firstName: document.getElementById("editFirstNameField").value.trim(),
+                                lastName: document.getElementById("editLastNameField").value.trim(),
+                                username: document.getElementById("editUsernameField").value.trim(),
+                                affiliation: document.getElementById("editAffiliationField").value.trim(),
+                                state: document.getElementById("editStateField").value.trim(),
+                                position: document.getElementById("editPositionField").value,
+                                title: document.getElementById("editTitleField").value.trim(),
+                                abstractText: document.getElementById("editAbstractField").value.trim(),
+                                pdfUploaded: abstracts[index].pdfUploaded
+                            };
+
+                            const editPdfInput = document.getElementById("editPdfField");
+                            if (editPdfInput.files.length > 0) {
+                                abstracts[index].pdfUploaded = true;
+                            }
+
+                            localStorage.setItem("abstracts", JSON.stringify(abstracts));
+                            alert("수정이 완료되었습니다.");
+                            renderAbstractList();
+                            new bootstrap.Tab(document.querySelector('#submitted-abstracts-tab')).show();
+                        }
+                    });
+
+                    // 초기 실행
+                    renderAbstractList(); 
+                    updateProgress();
+                });
+
+
+                </script></body>
+<!-- Footer -->
+<footer class="footer mt-5 py-4" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+    <div class="container text-center text-md-start">
+        <div class="row">
+            <!-- 왼쪽 로고 및 기관명 -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold">APSAO 2025</h5>
+                <p class="mb-0">The Asia-Pacific Society for Artificial Organs</p>
+            </div>
+            <!-- 중앙 주소 / 연락처 -->
+            <div class="col-md-4 mb-3">
+                <p class="mb-1"><strong>주소:</strong> 광주광역시 동구 제봉로 42 전남대학교병원 의생명연구원 501 호</p>
+                <p class="mb-1"><strong>TEL:</strong> 062-000-0000</p>
+                <p class="mb-1"><strong>FAX:</strong> -</p>
+                <p class="mb-0"><strong>E-mail:</strong>rvkrvyoj@gjnu.ac.co</p>
+            </div>
+            <!-- 오른쪽 저작권 -->
+            <div class="col-md-4 mb-3 text-md-end text-muted">
+                <p class="mb-0">&copy; 2025 APSAO demo by KRH</p>
             </div>
         </div>
     </div>
-    
-    <script>
-    // 새 Abstract 진행률
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("newAbstractForm");
-        const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
-        const progressBar = document.getElementById("progressBar");
-    
-        function updateProgress() {
-            let filled = 0;
-            inputs.forEach(input => {
-                if (input.type === "file") {
-                    if (input.files.length > 0) filled++;
-                } else if (input.value.trim() !== "") {
-                    filled++;
-                }
-            });
-            const progress = Math.round((filled / inputs.length) * 100);
-            progressBar.style.width = progress + "%";
-            progressBar.textContent = progress + "%";
-            progressBar.parentElement.setAttribute("aria-valuenow", progress);
-        }
-    
-        inputs.forEach(input => {
-            input.addEventListener("input", updateProgress);
-            input.addEventListener("change", updateProgress);
-        });
-    });
-    </script>
+</footer>
+</html>
